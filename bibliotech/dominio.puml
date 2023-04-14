@@ -2,6 +2,29 @@
 left to right direction
 skin rose
 
-' TODO: Add the domain model
+Entity Sistema{
+Libros
+Socios
+}
 
+Entity Socio{
+Nombre
+Apellido
+Correo Electronico
+Número de socio
+Contraseña
+Libros prestados
+}
+
+Entity Libro{
+Titulo
+ISBN
+Autor
+Categoria
+Cantidad de copias
+}
+
+Sistema"1"--"1..*"Libro: posee >
+Sistema"1"--"1..*"Socio: tiene >
+Socio"1..*"--"*"Libro: pide >
 @enduml
