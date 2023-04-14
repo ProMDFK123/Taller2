@@ -24,6 +24,7 @@ Class Socio{
 Class Sistema{
 -socios: Socio[]
 -libros: Libros[]
+-librosDisponibles: Libros[]
 -GSON: Gson
 -socio: Socio
 +Sistema()

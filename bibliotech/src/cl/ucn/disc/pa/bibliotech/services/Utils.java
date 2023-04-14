@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023. Programacion Avanzada, DISC, UCN.
- */
-
 package cl.ucn.disc.pa.bibliotech.services;
 
 import java.util.ArrayList;

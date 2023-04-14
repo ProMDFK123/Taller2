@@ -124,7 +124,7 @@ public final class Sistema {
         // agrego el libro al socio.
         this.socio.agregarLibro(libro);
 
-        // TODO: eliminar el libro de los disponibles
+        eliminarDisponible(isbn);
 
         // se actualiza la informacion de los archivos
         this.guardarInformacion();
@@ -249,5 +249,12 @@ public final class Sistema {
         return null;
     }
 
-    private void eliminarDisponible(){}
+    private void eliminarDisponible(String isbn){
+        for (int i=0;i<this.disponibles.length;i++){
+            if(this.disponibles[i].getIsbn().equalsIgnoreCase(isbn)){
+                this.disponibles[i]=null;
+                break;
+            }
+        }
+    }
 }
