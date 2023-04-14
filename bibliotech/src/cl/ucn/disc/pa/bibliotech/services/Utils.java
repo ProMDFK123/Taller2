@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * Clase que reune los metodos utilitarios.
  *
- * @author Diego Urrutia-Astorga.
+ * @author Gabriel López
  */
 public final class Utils {
 

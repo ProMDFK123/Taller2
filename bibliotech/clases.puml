@@ -1,7 +1,45 @@
 @startuml
-left to right direction
 skin rose
 
-' TODO: Add the class model
+Class Libro{
+-isbn: String
+-titulo: String
+-autor: String
+-categoria: String
+-cantCopias: int
++Libro(isbn: String, titulo: String, autor: String, categoria: String, cantCopias: int)
++get's()
++setCantCopias(cantCopias: int): void
+}
 
+Class Socio{
+-nombre: String
+-apellido: String
+-correoElectronico: String
+-numeroSocio: int
+-cantMaxLibros: int
+-librosPrestados: Libro[]
++get's()
++Socio(nombre: String, apellido: String, correoElectronico: String, numeroSocio: int, contraseña: String)
+}
+
+Class Sistema{
+-socios: Socio[]
+-libros: Libros[]
+-GSON: Gson
+-socio: Socio
++Sistema()
++IniciarSesion(numeroSocio: int, contraseña: String): void
++CerrarSesion(): void
++realizarPrestamo(isbn: String): void
++obtenerCatalogo(): String
++buscarLibro(isbn: String): Libro
++cargarInformacion(): void
++guardarInformacion(): void
++obtenerDatosSocio(): String
+}
+
+Sistema"1"--"1..*"Libro: posee >
+Sistema"1"--"1..*"Socio: tiene >
+Socio"1..*"--"*"Libro: pide >
 @enduml
