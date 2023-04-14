@@ -4,6 +4,7 @@ import cl.ucn.disc.pa.bibliotech.model.Libro;
 import cl.ucn.disc.pa.bibliotech.model.Socio;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.princeton.cs.stdlib.StdOut;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +14,7 @@ import java.io.IOException;
 /**
  * The Sistema.
  *
- * @author Programacion Avanzada.
+ * @author Gabriel López
  */
 public final class Sistema {
 
@@ -31,6 +32,9 @@ public final class Sistema {
      * The list of Libros.
      */
     private Libro[] libros;
+
+    //Lista de libros disponibles
+    private Libro[] disponibles;
 
     /**
      * Socio en el sistema.
@@ -58,9 +62,11 @@ public final class Sistema {
 
             // creo un libro y lo agrego al arreglo de libros.
             this.libros = Utils.append(this.libros, new Libro("1491910771", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
+            this.disponibles = Utils.append(this.libros, new Libro("1491910771", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
 
             // creo otro libro y lo agrego al arreglo de libros.
             this.libros = Utils.append(this.libros, new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
+            this.disponibles = Utils.append(this.libros, new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
 
         } finally {
             // guardo la informacion.
@@ -82,12 +88,11 @@ public final class Sistema {
             throw new IllegalArgumentException("El numero de socio no es valido!");
         }
 
-        // TODO: buscar el socio dado su numero.
+        buscarSocioNumero(numeroDeSocio);
 
-        // TODO: verificar su clave.
+        validarClave(numeroDeSocio,contrasenia);
 
-        // TODO: asignar al atributo socio el socio encontrado.
-
+        socio = socioEncontrado(numeroDeSocio,contrasenia);
     }
 
     /**
@@ -202,4 +207,47 @@ public final class Sistema {
         return "Nombre: " + this.socio.getNombreCompleto() + "\n"
                 + "Correo Electronico: " + this.socio.getCorreoElectronico();
     }
+
+    /**
+     * Metodo auxiliar para buscar a un socio dado su número.
+     * @param numeroSocio
+     */
+    private void buscarSocioNumero(int numeroSocio){
+        for(int i=0;i<socios.length;i++){
+            if(socios[i].getNumeroDeSocio()==numeroSocio){break;}else{continue;}
+        }
+        StdOut.println("El usuario no existe o no esta registrado.");
+    }
+
+    /**
+     * Método que ayuda con la validación de la contraseña
+     * @param numeroSocio
+     * @param clave del socio
+     */
+    private void validarClave(int numeroSocio, String clave){
+        for(int i=0;i<socios.length;i++){
+            if (socios[i].getNumeroDeSocio()==numeroSocio){
+                if(socios[i].getContrasenia().equalsIgnoreCase(clave)){
+                    break;
+                }else{
+                    StdOut.println("La contraseña es incorrecta");
+                }
+            }
+        }
+    }
+
+    private Socio socioEncontrado(int numeroSocio, String clave){
+        for(int i=0;i<socios.length;i++){
+            if (socios[i].getNumeroDeSocio()==numeroSocio){
+                if(socios[i].getContrasenia().equalsIgnoreCase(clave)){
+                    return this.socio = socios[i];
+                }else{
+                    StdOut.println("La contraseña es incorrecta");
+                }
+            }
+        }
+        return null;
+    }
+
+    private void eliminarDisponible()
 }

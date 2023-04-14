@@ -6,10 +6,8 @@ Class Libro{
 -titulo: String
 -autor: String
 -categoria: String
--cantCopias: int
 +Libro(isbn: String, titulo: String, autor: String, categoria: String, cantCopias: int)
 +get's()
-+setCantCopias(cantCopias: int): void
 }
 
 Class Socio{
