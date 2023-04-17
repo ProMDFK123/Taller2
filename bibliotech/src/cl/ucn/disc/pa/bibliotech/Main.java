@@ -150,15 +150,18 @@ public final class Main {
         String nuevaClave = null;
         String claveNueva = null;
         while(true){
-            StdOut.print("Ingrese su nueva contraseña: ");
-            nuevaClave = StdIn.readString();
-            StdOut.print("Ingrese su nueva contraseña: ");
-            claveNueva = StdIn.readLine();
-            if(nuevaClave.equalsIgnoreCase(claveNueva){
-                sistema.socio.setContrasenia(nuevaClave);
-                break;
-            }
-            StdOut.println("Las contraseñas no coinciden, intente nuevamente.");
+            try {
+                StdOut.print("Ingrese su nueva contraseña: ");
+                nuevaClave = StdIn.readString();
+                StdOut.print("Ingrese su nueva contraseña: ");
+                claveNueva = StdIn.readLine();
+                Utils.validarClave(nuevaClave);
+                if (nuevaClave.equalsIgnoreCase(claveNueva)) {
+                    sistema.socio.setContrasenia(nuevaClave);
+                    break;
+                }
+                StdOut.println("Las contraseñas no coinciden, intente nuevamente.");
+            }catch (IllegalArgumentException exception){}
         }
 
     }
@@ -171,7 +174,7 @@ public final class Main {
                 nuevoEmail = StdIn.readLine();
                 Utils.validarEmail(nuevoEmail);
                 break;
-            }except(IllegalArgumentException ex){continue;}
+            }catch (IllegalArgumentException exception){}
         }
     }
 }

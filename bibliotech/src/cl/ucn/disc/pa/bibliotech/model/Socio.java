@@ -1,6 +1,7 @@
 package cl.ucn.disc.pa.bibliotech.model;
 
 import cl.ucn.disc.pa.bibliotech.services.Utils;
+import edu.princeton.cs.stdlib.StdOut;
 
 /**
  * Clase que representa a un Socio.
@@ -65,10 +66,13 @@ public final class Socio {
         Utils.validarEmail(correoElectronico);
         this.correoElectronico = correoElectronico;
 
-        // TODO: agregar validacion
-        this.numeroDeSocio = numeroDeSocio;
+        if(numeroDeSocio>0){this.numeroDeSocio = numeroDeSocio;}
+        else{
+            StdOut.println("Número de socio no valido, escoja otro.");
+        }
 
-        // TODO: agregar validacion
+        //Valida si la contraseña tiene un formato concreto.
+        Utils.validarClave(contrasenia);
         this.contrasenia = contrasenia;
     }
 

@@ -17,6 +17,8 @@ public final class Utils {
      */
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
 
+    private static final Pattern Password = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$");
+
     /**
      * Constructor privado: nadie puede instanciar esta clase.
      */
@@ -52,6 +54,16 @@ public final class Utils {
         // el correo debe ser estructuralmente valido
         if (!EMAIL_PATTERN.matcher(email).matches()) {
             throw new IllegalArgumentException("Correo Electronico no valido: " + email);
+        }
+    }
+
+    /**
+     * Método que valida si la contraseña sigue un patron definido
+     * @param clave - Contraseña del socio a validar.
+     */
+    public static void validarClave(final String clave){
+        if(!Password.matcher(clave).matches()){
+            throw new IllegalArgumentException("Contraseña invalida.");
         }
     }
 }
