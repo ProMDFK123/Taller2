@@ -58,14 +58,15 @@ public final class Sistema {
             // no se encontraron datos, se agregar los por defecto.
 
             // creo un socio
-            Socio newSocio = new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123"));
+            Socio newSocio = new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123");
+            this.socios = Utils.append(this.socios,newSocio);
 
             // creo un libro y lo agrego al arreglo de libros.
-            Libro libro1 = new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
+            Libro libro1 = new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages");
             this.validarIsbn(libro1);
 
             // creo otro libro y lo agrego al arreglo de libros.
-            Libro libro2 = new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
+            Libro libro2 = new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages");
             this.validarIsbn(libro2);
 
         } finally {
