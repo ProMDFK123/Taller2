@@ -1,6 +1,7 @@
 package cl.ucn.disc.pa.bibliotech;
 
 import cl.ucn.disc.pa.bibliotech.services.Sistema;
+import cl.ucn.disc.pa.bibliotech.services.Utils;
 import edu.princeton.cs.stdlib.StdIn;
 import edu.princeton.cs.stdlib.StdOut;
 
@@ -21,7 +22,14 @@ public final class Main {
      * @throws IOException en caso de un error.
      */
     public static void main(final String[] args) throws IOException {
+        mainMenu();
+    }
 
+    /**
+     * Primera pantalla que aparece al iniciar el programa
+     * @throws IOException
+     */
+    private static void mainMenu() throws IOException {
         // inicializacion del sistema.
         Sistema sistema = new Sistema();
 
@@ -139,10 +147,31 @@ public final class Main {
     }
 
     private static void cambiarContrasenia(Sistema sistema) {
-        // TODO: implementar este metodo
+        String nuevaClave = null;
+        String claveNueva = null;
+        while(true){
+            StdOut.print("Ingrese su nueva contraseña: ");
+            nuevaClave = StdIn.readString();
+            StdOut.print("Ingrese su nueva contraseña: ");
+            claveNueva = StdIn.readLine();
+            if(nuevaClave.equalsIgnoreCase(claveNueva){
+                sistema.socio.setContrasenia(nuevaClave);
+                break;
+            }
+            StdOut.println("Las contraseñas no coinciden, intente nuevamente.");
+        }
+
     }
 
     private static void editarCorreo(Sistema sistema) {
-        // TODO: implementar este metodo
+        String nuevoEmail = null;
+        while (true){
+            try {
+                StdOut.print("Ingrese su nuevo correo: ");
+                nuevoEmail = StdIn.readLine();
+                Utils.validarEmail(nuevoEmail);
+                break;
+            }except(IllegalArgumentException ex){continue;}
+        }
     }
 }

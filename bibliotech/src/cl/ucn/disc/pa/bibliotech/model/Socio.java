@@ -128,4 +128,11 @@ public final class Socio {
         Utils.append(this.librosEnPrestamo, libro);
     }
 
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
 }

@@ -16,8 +16,11 @@ Class Socio{
 -correoElectronico: String
 -numeroSocio: int
 -cantMaxLibros: int
+-contrasenia: String
 -librosPrestados: Libro[]
 +get's()
++set(correoElectronico: String): void
++setContrasenia(contrasenia: String): void
 +Socio(nombre: String, apellido: String, correoElectronico: String, numeroSocio: int, contraseña: String)
 }
 
@@ -26,7 +29,7 @@ Class Sistema{
 -libros: Libros[]
 -librosDisponibles: Libros[]
 -GSON: Gson
--socio: Socio
++socio: Socio
 +Sistema()
 +IniciarSesion(numeroSocio: int, contraseña: String): void
 +CerrarSesion(): void

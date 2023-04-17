@@ -39,7 +39,7 @@ public final class Sistema {
     /**
      * Socio en el sistema.
      */
-    private Socio socio;
+    public Socio socio;
 
     /**
      * The Sistema.
