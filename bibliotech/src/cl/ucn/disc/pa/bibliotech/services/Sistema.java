@@ -58,15 +58,15 @@ public final class Sistema {
             // no se encontraron datos, se agregar los por defecto.
 
             // creo un socio
-            this.socios = Utils.append(this.socios, new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123"));
+            Socio newSocio = new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123"));
 
             // creo un libro y lo agrego al arreglo de libros.
-            this.libros = Utils.append(this.libros, new Libro("1491910771", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
-            this.disponibles = Utils.append(this.libros, new Libro("1491910771", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
+            Libro libro1 = new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
+            this.validarIsbn(libro1);
 
             // creo otro libro y lo agrego al arreglo de libros.
-            this.libros = Utils.append(this.libros, new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
-            this.disponibles = Utils.append(this.libros, new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
+            Libro libro2 = new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
+            this.validarIsbn(libro2);
 
         } finally {
             // guardo la informacion.
@@ -254,6 +254,20 @@ public final class Sistema {
             if(this.disponibles[i].getIsbn().equalsIgnoreCase(isbn)){
                 this.disponibles[i]=null;
                 break;
+            }
+        }
+    }
+
+    /**
+     * Método que valida si el ISBN no se repite; agrega el libro en caso de no repetirse.
+     * @param libro - Libro a analizar.
+     */
+    private void validarIsbn(Libro libro){
+        for(int i = 0; i<this.libros.length;i++){
+            if(libros[i].getIsbn().equalsIgnoreCase(libro.getIsbn())){StdOut.println("No pueden haber 2 o mas libros con el mismo ISBN.");}
+            else{
+                this.libros=Utils.append(this.libros,libro);
+                this.disponibles=Utils.append(this.disponibles,libro);
             }
         }
     }
