@@ -173,6 +173,7 @@ public final class Main {
                 StdOut.print("Ingrese su nuevo correo: ");
                 nuevoEmail = StdIn.readLine();
                 Utils.validarEmail(nuevoEmail);
+                sistema.socio.setCorreoElectronico(nuevoEmail);
                 break;
             }catch (IllegalArgumentException exception){}
         }
