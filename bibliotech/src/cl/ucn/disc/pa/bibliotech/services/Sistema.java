@@ -89,10 +89,10 @@ public final class Sistema {
             throw new IllegalArgumentException("El numero de socio no es valido!");
         }
 
-        for(int i=0;i<socios.length;i++){
-            if(this.socios[i].getNumeroDeSocio()==numeroDeSocio && this.socios[i].getContrasenia().equals(contrasenia)){
-                this.socio=socios[i];
-            } else{
+        for (Socio value : socios) {
+            if (value.getNumeroDeSocio() == numeroDeSocio && value.getContrasenia().equals(contrasenia)) {
+                this.socio = value;
+            } else {
                 throw new IllegalArgumentException("La clave o número de socio no corresponden a un usuario registrado, verifique sus datos e intente nuevamente.");
             }
         }
