@@ -211,47 +211,6 @@ public final class Sistema {
                 + "Correo Electronico: " + this.socio.getCorreoElectronico();
     }
 
-    /**
-     * Metodo auxiliar para buscar a un socio dado su número.
-     * @param numeroSocio
-     */
-    private void buscarSocioNumero(int numeroSocio){
-        for(int i=0;i<socios.length;i++){
-            if(socios[i].getNumeroDeSocio()==numeroSocio){break;}else{continue;}
-        }
-        StdOut.println("El usuario no existe o no esta registrado.");
-    }
-
-    /**
-     * Método que ayuda con la validación de la contraseña
-     * @param numeroSocio
-     * @param clave del socio
-     */
-    private void validarClave(int numeroSocio, String clave){
-        for(int i=0;i<socios.length;i++){
-            if (socios[i].getNumeroDeSocio()==numeroSocio){
-                if(socios[i].getContrasenia().equalsIgnoreCase(clave)){
-                    break;
-                }else{
-                    StdOut.println("La contraseña es incorrecta");
-                }
-            }
-        }
-    }
-
-    private Socio socioEncontrado(int numeroSocio, String clave){
-        for(int i=0;i<socios.length;i++){
-            if (socios[i].getNumeroDeSocio()==numeroSocio){
-                if(socios[i].getContrasenia().equalsIgnoreCase(clave)){
-                    return this.socio = socios[i];
-                }else{
-                    StdOut.println("La contraseña es incorrecta");
-                }
-            }
-        }
-        return null;
-    }
-
     private void eliminarDisponible(String isbn){
         for (int i=0;i<this.disponibles.length;i++){
             if(this.disponibles[i].getIsbn().equalsIgnoreCase(isbn)){
