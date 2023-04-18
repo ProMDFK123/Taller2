@@ -89,13 +89,8 @@ public final class Sistema {
             throw new IllegalArgumentException("El numero de socio no es valido!");
         }
 
-        for (Socio value : socios) {
-            if (value.getNumeroDeSocio() == numeroDeSocio && value.getContrasenia().equals(contrasenia)) {
-                this.socio = value;
-            } else {
-                throw new IllegalArgumentException("La clave o número de socio no corresponden a un usuario registrado, verifique sus datos e intente nuevamente.");
-            }
-        }
+        try{logIn(numeroDeSocio,contrasenia);}
+        catch(IllegalArgumentException exception){return;}
     }
 
     /**
@@ -230,6 +225,16 @@ public final class Sistema {
             else{
                 this.libros=Utils.append(this.libros,libro);
                 this.disponibles=Utils.append(this.disponibles,libro);
+            }
+        }
+    }
+
+    private void logIn(int numeroSocio, String clave){
+        for(int i=0;i<this.socios.length;i++){
+            if(this.socios[i].getNumeroDeSocio()==numeroSocio && this.socios[i].getContrasenia().equals(clave)){
+                this.socio=this.socios[i];
+            }else{
+                throw new IllegalArgumentException("El número de socio o la contraseña no coinciden con un usuario registrado, verifique sus datos e intente nuevamente.");
             }
         }
     }
