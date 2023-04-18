@@ -231,11 +231,12 @@ public final class Sistema {
 
     private void logIn(int numeroSocio, String clave){
         for(int i=0;i<this.socios.length;i++){
-            if(this.socios[i].getNumeroDeSocio()==numeroSocio && this.socios[i].getContrasenia().equals(clave)){
-                this.socio=this.socios[i];
-            }else{
-                throw new IllegalArgumentException("El número de socio o la contraseña no coinciden con un usuario registrado, verifique sus datos e intente nuevamente.");
+            if(this.socios[i].getNumeroDeSocio() == numeroSocio){
+                if(this.socios[i].getContrasenia().equalsIgnoreCase(clave)){
+                    this.socio=this.socios[i];
+                }
             }
         }
+        throw new IllegalArgumentException("Clave y/o número de socio no corresponden a un usuario registrado.");
     }
 }
