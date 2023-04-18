@@ -1,8 +1,6 @@
-/*
- * Copyright (c) 2023. Programacion Avanzada, DISC, UCN.
- */
-
 package cl.ucn.disc.pa.bibliotech.model;
+
+import java.util.regex.Pattern;
 
 /**
  * Clase que representa un Libro.
@@ -31,7 +29,11 @@ public final class Libro {
      */
     private String categoria;
 
-    // TODO: Agregar la calificacion.
+    //Calificación del libro
+    private double calificacion;
+
+    //Patron de ISBN
+    private static final Pattern ISBN = Pattern.compile("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$");
 
     /**
      * The Constructor.
@@ -42,20 +44,30 @@ public final class Libro {
      * @param categoria del libro.
      */
     public Libro(final String isbn, final String titulo, final String autor, final String categoria) {
-        // TODO: agregar validacion de ISBN
+        //Validación del ISBN.
+        this.validarIsbn(isbn);
         this.isbn = isbn;
 
-        // validacion del titulo
+        // validación del titulo.
         if (titulo == null || titulo.length() == 0) {
             throw new IllegalArgumentException("Titulo no valido!");
         }
         this.titulo = titulo;
 
-        // TODO: Agregar validacion
+        //validación del autor.
+        if(autor==null || autor.length()==0){
+            throw new IllegalArgumentException("Autor/a no vaido/a!");
+        }
         this.autor = autor;
 
-        // TODO: Agregar validacion
+        //Validación de la categoria.
+        if(categoria==null || categoria.length()==0){
+            throw new IllegalArgumentException("Categoria no vaida!");
+        }
         this.categoria = categoria;
+
+        //Definición de la calificación inicial.
+        this.calificacion=0;
     }
 
     /**
@@ -84,5 +96,22 @@ public final class Libro {
      */
     public String getCategoria() {
         return this.categoria;
+    }
+
+    /**
+     * @return calificaión del libro.
+     */
+    public double getCalificacion() {
+        return calificacion;
+    }
+
+    /**
+     * Validador del ISBN.
+     * @param isbn - ISBN a validar.
+     */
+    private void validarIsbn(final String isbn){
+        if(!ISBN.matcher(isbn).matches()){
+            throw new IllegalArgumentException("El ISBN no es valido.");
+        }
     }
 }
