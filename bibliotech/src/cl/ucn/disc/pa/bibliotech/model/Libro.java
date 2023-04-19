@@ -31,6 +31,7 @@ public final class Libro {
 
     //Calificación del libro
     private double calificacion;
+    private int cantidadCalificaciones;
 
     //Patron de ISBN
     private static final Pattern ISBN = Pattern.compile("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$");
@@ -68,6 +69,7 @@ public final class Libro {
 
         //Definición de la calificación inicial.
         this.calificacion=0;
+        this.cantidadCalificaciones=0;
     }
 
     /**
@@ -113,5 +115,26 @@ public final class Libro {
         if(!ISBN.matcher(isbn).matches()){
             throw new IllegalArgumentException("El ISBN no es valido.");
         }
+    }
+
+    /**
+     * @return veces que el libro fue calificado.
+     */
+    public int getCantidadCalificaciones() {
+        return cantidadCalificaciones;
+    }
+
+    /**
+     * @param cantidadCalificaciones nuevo valor.
+     */
+    public void setCantidadCalificaciones(int cantidadCalificaciones) {
+        this.cantidadCalificaciones = cantidadCalificaciones;
+    }
+
+    /**
+     * @param calificacion actualización de la calificación.
+     */
+    public void setCalificacion(double calificacion) {
+        this.calificacion = calificacion;
     }
 }

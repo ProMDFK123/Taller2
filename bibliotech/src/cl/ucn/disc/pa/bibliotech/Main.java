@@ -26,7 +26,7 @@ public final class Main {
 
     /**
      * Primera pantalla que aparece al iniciar el programa
-     * @throws IOException
+     * @throws IOException en caso de error
      */
     private static void mainMenu() throws IOException {
         // inicializacion del sistema.
@@ -59,7 +59,7 @@ public final class Main {
      *
      * @param sistema a utilizar.
      */
-    private static void iniciarSesion(final Sistema sistema) {
+    private static void iniciarSesion(final Sistema sistema) throws IOException {
         StdOut.println("[*] Iniciar sesion en BiblioTech [*]");
         StdOut.print("Ingrese su numero de socio: ");
         int numeroSocio = StdIn.readInt();
@@ -80,7 +80,7 @@ public final class Main {
         menuPrincipal(sistema);
     }
 
-    private static void menuPrincipal(final Sistema sistema) {
+    private static void menuPrincipal(final Sistema sistema) throws IOException {
         String opcion = null;
         while (!Objects.equals(opcion, "4")) {
             StdOut.println("""
@@ -99,7 +99,7 @@ public final class Main {
             switch (opcion) {
                 case "1" -> menuPrestamo(sistema);
                 case "2" -> editarInformacion(sistema);
-                //case "3" -> TODO: Crear metodo de calificar libro.
+                case "3" -> calificarlibro(sistema);
                 case "4" -> sistema.cerrarSession();
                 default -> StdOut.println("Opcion no valida, intente nuevamente");
             }
@@ -146,8 +146,8 @@ public final class Main {
     }
 
     private static void cambiarContrasenia(Sistema sistema) {
-        String nuevaClave = null;
-        String claveNueva = null;
+        String nuevaClave;
+        String claveNueva;
         while(true){
             try {
                 StdOut.print("Ingrese su nueva contraseña: ");
@@ -160,13 +160,15 @@ public final class Main {
                     break;
                 }
                 StdOut.println("Las contraseñas no coinciden, intente nuevamente.");
-            }catch (IllegalArgumentException exception){}
+            }catch (IllegalArgumentException exception) {
+                throw new RuntimeException(exception);
+            }
         }
 
     }
 
     private static void editarCorreo(Sistema sistema) {
-        String nuevoEmail = null;
+        String nuevoEmail;
         while (true){
             try {
                 StdOut.print("Ingrese su nuevo correo: ");
@@ -174,8 +176,20 @@ public final class Main {
                 Utils.validarEmail(nuevoEmail);
                 sistema.socio.setCorreoElectronico(nuevoEmail);
                 break;
-            }catch (IllegalArgumentException exception){}
+            }catch (IllegalArgumentException exception) {
+                throw new RuntimeException(exception);
+            }
         }
     }
 
+    private static void calificarlibro(Sistema sistema) throws IOException {
+        StdOut.println("[*] Calificar un Libro [*]");
+        StdOut.println(sistema.obtegerCatalogoLibros());
+
+        StdOut.print("Ingrese el ISBN del libro a tomar prestado: ");
+        String isbn = StdIn.readLine();
+
+        sistema.realizarCalificacion(isbn);
+
+    }
 }

@@ -4,6 +4,7 @@ import cl.ucn.disc.pa.bibliotech.model.Libro;
 import cl.ucn.disc.pa.bibliotech.model.Socio;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.princeton.cs.stdlib.StdIn;
 import edu.princeton.cs.stdlib.StdOut;
 
 import java.io.FileNotFoundException;
@@ -90,7 +91,7 @@ public final class Sistema {
         }
 
         try{logIn(numeroDeSocio,contrasenia);}
-        catch(IllegalArgumentException exception){return;}
+        catch(IllegalArgumentException exception){StdOut.println("Ha ocurrido un error: "+exception);}
     }
 
     /**
@@ -238,5 +239,37 @@ public final class Sistema {
             }
         }
         throw new IllegalArgumentException("Clave y/o número de socio no corresponden a un usuario registrado.");
+    }
+
+    public void realizarCalificacion(String isbn) throws IOException{
+
+        // el socio debe estar activo.
+        if (this.socio == null) {
+            throw new IllegalArgumentException("Socio no se ha logeado!");
+        }
+
+        // busco el libro.
+        Libro libro = this.buscarLibro(isbn);
+
+        // si no lo encontre, lo informo.
+        if (libro == null) {
+            throw new IllegalArgumentException("Libro con isbn " + isbn + " no existe o no se encuentra disponible.");
+        }
+        int cant = libro.getCantidadCalificaciones();
+        double stars = libro.getCalificacion();
+        StdOut.println("Califique su libro (*****): ");
+        double estrellas = StdIn.readDouble();
+        if(estrellas<0 || estrellas>5){
+            throw new IllegalArgumentException("Valor invalido.");
+        }
+        libro.setCantidadCalificaciones(cant++);
+        if(cant==1){
+            stars=estrellas;
+        }else{
+            stars=(stars+estrellas)/2;
+        }
+
+        // se actualiza la informacion de los archivos
+        this.guardarInformacion();
     }
 }
