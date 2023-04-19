@@ -90,7 +90,7 @@ public final class Sistema {
             throw new IllegalArgumentException("El numero de socio no es valido!");
         }
 
-        try{logIn(numeroDeSocio,contrasenia);}
+        try{this.socio=logIn(numeroDeSocio,contrasenia);}
         catch(IllegalArgumentException exception){StdOut.println("Ha ocurrido un error: "+exception);}
     }
 
@@ -243,11 +243,11 @@ public final class Sistema {
      * @param numeroSocio - Número de socio correspondiente al socio a ingresar.
      * @param clave - Contraseña del socio a ingresar.
      */
-    private void logIn(int numeroSocio, String clave){
+    private Socio logIn(int numeroSocio, String clave){
         for(int i=0;i<this.socios.length;i++){
             if(this.socios[i].getNumeroDeSocio() == numeroSocio){
                 if(this.socios[i].getContrasenia().equalsIgnoreCase(clave)){
-                    this.socio=this.socios[i];
+                    return this.socio=this.socios[i];
                 }
             }
         }

@@ -80,6 +80,11 @@ public final class Main {
         menuPrincipal(sistema);
     }
 
+    /**
+     * Método que despliega el menu principal tras iniciar sesión.
+     * @param sistema a utilizar.
+     * @throws IOException en caso de error.
+     */
     private static void menuPrincipal(final Sistema sistema) throws IOException {
         String opcion = null;
         while (!Objects.equals(opcion, "4")) {
@@ -106,6 +111,10 @@ public final class Main {
         }
     }
 
+    /**
+     * Método que arroja el menú del prestamo de un libro.
+     * @param sistema a utilizar.
+     */
     private static void menuPrestamo(Sistema sistema) {
         StdOut.println("[*] Préstamo de un Libro [*]");
         StdOut.println(sistema.obtegerCatalogoLibros());
@@ -120,6 +129,10 @@ public final class Main {
         }
     }
 
+    /**
+     * Método que depliega el menú de editar perfil.
+     * @param sistema a utilizar.
+     */
     private static void editarInformacion(Sistema sistema) {
 
         String opcion = null;
@@ -145,6 +158,10 @@ public final class Main {
         }
     }
 
+    /**
+     * Método para cambiar la contraseña.
+     * @param sistema a utilizar.
+     */
     private static void cambiarContrasenia(Sistema sistema) {
         String nuevaClave;
         String claveNueva;
@@ -168,6 +185,10 @@ public final class Main {
 
     }
 
+    /**
+     * Método para cambiar el email del usuario.
+     * @param sistema a utilizar.
+     */
     private static void editarCorreo(Sistema sistema) {
         String nuevoEmail;
         while (true){
@@ -184,6 +205,11 @@ public final class Main {
         }
     }
 
+    /**
+     * Método para calificar un libro.
+     * @param sistema a utilizar.
+     * @throws IOException en caso de error.m
+     */
     private static void calificarlibro(Sistema sistema) throws IOException {
         StdOut.println("[*] Calificar un Libro [*]");
         StdOut.println(sistema.obtegerCatalogoLibros());
