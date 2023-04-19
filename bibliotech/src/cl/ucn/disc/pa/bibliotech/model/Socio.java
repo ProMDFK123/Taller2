@@ -1,7 +1,6 @@
 package cl.ucn.disc.pa.bibliotech.model;
 
-import cl.ucn.disc.pa.bibliotech.services.Utils;
-import edu.princeton.cs.stdlib.StdOut;
+import cl.ucn.disc.pa.bibliotech.services.*;
 
 /**
  * Clase que representa a un Socio.
@@ -55,21 +54,23 @@ public final class Socio {
      * @param contrasenia       del socio.
      */
     public Socio(String nombre, String apellido, String correoElectronico, int numeroDeSocio, String contrasenia) {
-
-        // TODO: agregar validacion
+        //Verificador del nombre.
+        if(nombre==null || nombre.length()==0){throw new IllegalArgumentException("Nombre invalido.");}
         this.nombre = nombre;
 
-        // TODO: agregar validacion
+        //Verificador del apellido.
+        if(apellido==null || apellido.length()==0){throw new IllegalArgumentException("Apellido invalido.");}
         this.apellido = apellido;
 
         // metodo estatico para validacion de email.
         Utils.validarEmail(correoElectronico);
         this.correoElectronico = correoElectronico;
 
-        if(numeroDeSocio>0){this.numeroDeSocio = numeroDeSocio;}
-        else{
-            StdOut.println("Número de socio no valido, escoja otro.");
+        //Validador del número de socio.
+        if(numeroDeSocio<=0) {
+            throw new IllegalArgumentException("Número de socio invalido");
         }
+        this.numeroDeSocio = numeroDeSocio;
 
         //Valida si la contraseña tiene un formato concreto.
         Utils.validarClave(contrasenia);
