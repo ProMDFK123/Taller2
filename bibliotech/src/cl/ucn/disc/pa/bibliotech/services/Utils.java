@@ -20,9 +20,6 @@ public final class Utils {
     //Validador de la contraseña.
     private static final Pattern Password = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$");
 
-    //Validador del ISBN
-    private static final Pattern ISBN = Pattern.compile("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$");
-
     /**
      * Constructor privado: nadie puede instanciar esta clase.
      */

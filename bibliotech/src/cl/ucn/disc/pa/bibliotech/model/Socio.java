@@ -133,10 +133,16 @@ public final class Socio {
         Utils.append(this.librosEnPrestamo, libro);
     }
 
+    /**
+     * @param correoElectronico - Nuevo correo del socio.
+     */
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
 
+    /**
+     * @param contrasenia - Nueva contraseña del socio.
+     */
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }

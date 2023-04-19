@@ -198,6 +198,10 @@ public final class Sistema {
 
     }
 
+    /**
+     * Método para obtener la información de un socio.
+     * @return la información del socio.
+     */
     public String obtenerDatosSocioLogeado() {
         if (this.socio == null) {
             throw new IllegalArgumentException("No hay un Socio logeado");
@@ -207,6 +211,10 @@ public final class Sistema {
                 + "Correo Electronico: " + this.socio.getCorreoElectronico();
     }
 
+    /**
+     * Método que elimina un libro de la lista de disponibles.
+     * @param isbn - ISBN del libro a eliminar de disponibles.
+     */
     private void eliminarDisponible(String isbn){
         for (int i=0;i<this.disponibles.length;i++){
             if(this.disponibles[i].getIsbn().equalsIgnoreCase(isbn)){
@@ -230,6 +238,11 @@ public final class Sistema {
         }
     }
 
+    /**
+     * Método auxiliar de inicio de sesión.
+     * @param numeroSocio - Número de socio correspondiente al socio a ingresar.
+     * @param clave - Contraseña del socio a ingresar.
+     */
     private void logIn(int numeroSocio, String clave){
         for(int i=0;i<this.socios.length;i++){
             if(this.socios[i].getNumeroDeSocio() == numeroSocio){
@@ -241,6 +254,11 @@ public final class Sistema {
         throw new IllegalArgumentException("Clave y/o número de socio no corresponden a un usuario registrado.");
     }
 
+    /**
+     * Método para calificar un libro.
+     * @param isbn - ISBN del libro a calificar.
+     * @throws IOException en caso de algún error.
+     */
     public void realizarCalificacion(String isbn) throws IOException{
 
         // el socio debe estar activo.

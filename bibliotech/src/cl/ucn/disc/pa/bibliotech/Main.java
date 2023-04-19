@@ -161,7 +161,8 @@ public final class Main {
                 }
                 StdOut.println("Las contraseñas no coinciden, intente nuevamente.");
             }catch (IllegalArgumentException exception) {
-                throw new RuntimeException(exception);
+                StdOut.println("Ocurrio un error, intente nuevamente.");
+                return;
             }
         }
 
@@ -177,7 +178,8 @@ public final class Main {
                 sistema.socio.setCorreoElectronico(nuevoEmail);
                 break;
             }catch (IllegalArgumentException exception) {
-                throw new RuntimeException(exception);
+                StdOut.println("Ocurrio un error, intente nuevamente.");
+                return;
             }
         }
     }
@@ -190,6 +192,5 @@ public final class Main {
         String isbn = StdIn.readLine();
 
         sistema.realizarCalificacion(isbn);
-
     }
 }
