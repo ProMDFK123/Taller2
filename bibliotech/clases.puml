@@ -6,8 +6,14 @@ Class Libro{
 -titulo: String
 -autor: String
 -categoria: String
+-calificacion: double
+-cantidadCalificaciones: int
+-ISBN: Pattern
 +Libro(isbn: String, titulo: String, autor: String, categoria: String, cantCopias: int)
 +get's()
+-validarIsbn(isbn: String): void
++setCalificacion(calificacion: double): void
++setCantidadCalificaciones(cantidadCalificaciones: int): void
 }
 
 Class Socio{
@@ -22,26 +28,41 @@ Class Socio{
 +set(correoElectronico: String): void
 +setContrasenia(contrasenia: String): void
 +Socio(nombre: String, apellido: String, correoElectronico: String, numeroSocio: int, contraseña: String)
++agregarLibro(libro: Libro): void
 }
 
 Class Sistema{
 -socios: Socio[]
 -libros: Libros[]
--librosDisponibles: Libros[]
+-disponibles: Libros[]
 -GSON: Gson
 +socio: Socio
 +Sistema()
-+IniciarSesion(numeroSocio: int, contraseña: String): void
-+CerrarSesion(): void
-+realizarPrestamo(isbn: String): void
-+obtenerCatalogo(): String
++iniciarSession(numeroSocio: int, contraseña: String): void
++cerrarSesion(): void
++realizarPrestamoLibro(isbn: String): void
++obtenerCatalogoLibros(): String
 +buscarLibro(isbn: String): Libro
 +cargarInformacion(): void
 +guardarInformacion(): void
 +obtenerDatosSocio(): String
+-eliminarDisponible(isbn: String): void
+-validarIsbn(libro: Libro): void
+-logIn(numeroSocio: int, clave: String): void
++realizarCalificacion(isbn: String): void
+}
+
+Class Utils{
+-EMAIL_PATTERN: Pattern
+-Password: Pattern
+-Utils()
++append(theStaticArray: T[], theObject: T): <T> T[]
++validarEmail(email: String): void
++validarClave(clave: String): void
 }
 
 Sistema"1"--"1..*"Libro: posee >
 Sistema"1"--"1..*"Socio: tiene >
-Socio"1..*"--"*"Libro: pide >
+Socio"1..*"--"5"Libro: pide >
+Utils ^.. Sistema: implements
 @enduml

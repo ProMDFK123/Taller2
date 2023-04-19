@@ -283,8 +283,10 @@ public final class Sistema {
         libro.setCantidadCalificaciones(cant++);
         if(cant==1){
             stars=estrellas;
+            libro.setCalificacion(stars);
         }else{
             stars=(stars+estrellas)/2;
+            libro.setCalificacion(stars);
         }
 
         // se actualiza la informacion de los archivos
