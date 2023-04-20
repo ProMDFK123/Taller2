@@ -59,20 +59,19 @@ public final class Sistema {
             // no se encontraron datos, se agregar los por defecto.
 
             // creo un socio.
-            Socio newSocio = new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123");
-            this.socios = Utils.append(this.socios,newSocio);
+            this.socios = Utils.append(this.socios, new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123"));
 
             //creo otro socio.
-            Socio socio1 = new Socio("Catalina","Berrios","gabolopez070@gmail.com",2,"26112022");
-            this.socios=Utils.append(this.socios,socio1);
+            this.socios = Utils.append(this.socios, new Socio("Catalina", "Berrios", "catalina.berrios@alumnos.ucn.cl", 2, "26112022"));
 
             // creo un libro y lo agrego al arreglo de libros.
             Libro libro1 = new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages");
-            this.validarIsbn(libro1);
+            this.libros = Utils.append(this.libros, new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
+            this.disponibles = Utils.append(this.disponibles, new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
 
             // creo otro libro y lo agrego al arreglo de libros.
-            Libro libro2 = new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages");
-            this.validarIsbn(libro2);
+            this.libros=Utils.append(this.libros, new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
+            this.disponibles=Utils.append(this.disponibles, new Libro("1491910771", "Effective Java", "Joshua Bloch", "Programming Languages"));
 
         } finally {
             // guardo la informacion.
@@ -234,20 +233,6 @@ public final class Sistema {
             if(this.disponibles[i].getIsbn().equalsIgnoreCase(isbn)){
                 this.disponibles[i]=null;
                 break;
-            }
-        }
-    }
-
-    /**
-     * Método que valida si el ISBN no se repite; agrega el libro en caso de no repetirse.
-     * @param libro - Libro a analizar.
-     */
-    private void validarIsbn(Libro libro){
-        for(int i = 0; i<this.libros.length;i++){
-            if(libros[i].getIsbn().equalsIgnoreCase(libro.getIsbn())){StdOut.println("No pueden haber 2 o mas libros con el mismo ISBN.");}
-            else{
-                this.libros=Utils.append(this.libros,libro);
-                this.disponibles=Utils.append(this.disponibles,libro);
             }
         }
     }
