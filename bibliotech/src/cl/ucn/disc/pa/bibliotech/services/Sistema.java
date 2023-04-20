@@ -86,7 +86,7 @@ public final class Sistema {
      * @param numeroDeSocio a utilizar.
      * @param contrasenia   a validar.
      */
-    public Socio iniciarSession(final int numeroDeSocio, final String contrasenia) {
+    public void iniciarSession(final int numeroDeSocio, final String contrasenia) {
 
         // el numero de socio siempre es positivo.
         if (numeroDeSocio <= 0) {
@@ -94,17 +94,20 @@ public final class Sistema {
         }
 
         try{
-            for(int i=0;i<this.socios.length;i++){
-                if(this.socios[i].getNumeroDeSocio() == numeroDeSocio){
-                    if(this.socios[i].getContrasenia().equalsIgnoreCase(contrasenia)){
-                        return this.socio=this.socios[i];
-                    }
-                }
-            }
-            throw new IllegalArgumentException("Clave y/o número de socio no corresponden a un usuario registrado.");
+            this.socio = this.logIn(numeroDeSocio,contrasenia);
         }
         catch(IllegalArgumentException exception){StdOut.println("Ha ocurrido un error: "+exception);}
-        return null;
+    }
+
+    private Socio logIn(final int numeroSocio, final String clave){
+        for(int i=0;i<this.socios.length;i++){
+            if(this.socios[i].getNumeroDeSocio() == numeroSocio){
+                if(this.socios[i].getContrasenia().equalsIgnoreCase(clave)){
+                    return this.socio=this.socios[i];
+                }
+            }
+        }
+        throw new IllegalArgumentException("Clave y/o número de socio no corresponden a un usuario registrado.");
     }
 
     /**

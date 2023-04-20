@@ -70,7 +70,7 @@ public final class Main {
 
         // intento el inicio de session
         try {
-            sistema.socio = sistema.iniciarSession(numeroSocio, contrasenia);
+            sistema.iniciarSession(numeroSocio, contrasenia);
         } catch (IllegalArgumentException ex) {
             StdOut.println("Ocurrio un error: " + ex.getMessage());
             return;
