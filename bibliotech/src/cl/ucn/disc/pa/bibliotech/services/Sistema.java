@@ -58,9 +58,13 @@ public final class Sistema {
         } catch (FileNotFoundException ex) {
             // no se encontraron datos, se agregar los por defecto.
 
-            // creo un socio
+            // creo un socio.
             Socio newSocio = new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123");
             this.socios = Utils.append(this.socios,newSocio);
+
+            //creo otro socio.
+            Socio socio1 = new Socio("Catalina","Berrios","gabolopez070@gmail.com",2,"26112022");
+            this.socios=Utils.append(this.socios,socio1);
 
             // creo un libro y lo agrego al arreglo de libros.
             Libro libro1 = new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages");
@@ -83,15 +87,25 @@ public final class Sistema {
      * @param numeroDeSocio a utilizar.
      * @param contrasenia   a validar.
      */
-    public void iniciarSession(final int numeroDeSocio, final String contrasenia) {
+    public Socio iniciarSession(final int numeroDeSocio, final String contrasenia) {
 
         // el numero de socio siempre es positivo.
         if (numeroDeSocio <= 0) {
             throw new IllegalArgumentException("El numero de socio no es valido!");
         }
 
-        try{this.socio=logIn(numeroDeSocio,contrasenia);}
+        try{
+            for(int i=0;i<this.socios.length;i++){
+                if(this.socios[i].getNumeroDeSocio() == numeroDeSocio){
+                    if(this.socios[i].getContrasenia().equalsIgnoreCase(contrasenia)){
+                        return this.socio=this.socios[i];
+                    }
+                }
+            }
+            throw new IllegalArgumentException("Clave y/o número de socio no corresponden a un usuario registrado.");
+        }
         catch(IllegalArgumentException exception){StdOut.println("Ha ocurrido un error: "+exception);}
+        return null;
     }
 
     /**
@@ -236,22 +250,6 @@ public final class Sistema {
                 this.disponibles=Utils.append(this.disponibles,libro);
             }
         }
-    }
-
-    /**
-     * Método auxiliar de inicio de sesión.
-     * @param numeroSocio - Número de socio correspondiente al socio a ingresar.
-     * @param clave - Contraseña del socio a ingresar.
-     */
-    private Socio logIn(int numeroSocio, String clave){
-        for(int i=0;i<this.socios.length;i++){
-            if(this.socios[i].getNumeroDeSocio() == numeroSocio){
-                if(this.socios[i].getContrasenia().equalsIgnoreCase(clave)){
-                    return this.socio=this.socios[i];
-                }
-            }
-        }
-        throw new IllegalArgumentException("Clave y/o número de socio no corresponden a un usuario registrado.");
     }
 
     /**
