@@ -190,15 +190,16 @@ public final class Main {
      * @param sistema a utilizar.
      */
     private static void editarCorreo(Sistema sistema) {
+        boolean estado = true;
         String nuevoEmail;
-        while (true){
+        while (estado) {
             try {
                 StdOut.print("Ingrese su nuevo correo: ");
                 nuevoEmail = StdIn.readLine();
                 Utils.validarEmail(nuevoEmail);
                 sistema.socio.setCorreoElectronico(nuevoEmail);
-                break;
-            }catch (IllegalArgumentException exception) {
+                estado=false;
+            } catch (IllegalArgumentException exception) {
                 StdOut.println("Ocurrio un error, intente nuevamente.");
                 return;
             }

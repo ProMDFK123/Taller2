@@ -12,22 +12,22 @@ public final class Libro {
     /**
      * The ISBN.
      */
-    private String isbn;
+    private final String isbn;
 
     /**
      * The Titulo.
      */
-    private String titulo;
+    private final String titulo;
 
     /**
      * The Author.
      */
-    private String autor;
+    private final String autor;
 
     /**
      * The Categoria
      */
-    private String categoria;
+    private final String categoria;
 
     //Calificación del libro
     private double calificacion;

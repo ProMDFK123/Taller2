@@ -17,12 +17,12 @@ public final class Socio {
     /**
      * Nombre del socio.
      */
-    private String nombre;
+    private final String nombre;
 
     /**
      * Apellido del socio.
      */
-    private String apellido;
+    private final String apellido;
 
     /**
      * Email del socio.
@@ -32,7 +32,7 @@ public final class Socio {
     /**
      * Numero del socio.
      */
-    private int numeroDeSocio;
+    private final int numeroDeSocio;
 
     /**
      * Contrasenia del socio.
@@ -42,7 +42,7 @@ public final class Socio {
     /**
      * Libros que el Socio tiene en prestamo (maximo 10).
      */
-    private Libro[] librosEnPrestamo = new Libro[0];
+    private final Libro[] librosEnPrestamo = new Libro[0];
 
     /**
      * The Constructor.
@@ -75,20 +75,6 @@ public final class Socio {
         //Valida si la contraseña tiene un formato concreto.
         Utils.validarClave(contrasenia);
         this.contrasenia = contrasenia;
-    }
-
-    /**
-     * @return el nombre del Socio.
-     */
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    /**
-     * @return el apellido del Socio.
-     */
-    public String getApellido() {
-        return this.apellido;
     }
 
     /**
