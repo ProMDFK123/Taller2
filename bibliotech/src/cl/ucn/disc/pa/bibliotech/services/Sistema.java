@@ -62,7 +62,7 @@ public final class Sistema {
             this.socios = Utils.append(this.socios, new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123"));
 
             //creo otro socio.
-            this.socios = Utils.append(this.socios, new Socio("Catalina", "Berrios", "catalina.berrios@alumnos.ucn.cl", 2, "26112022"));
+            this.socios = Utils.append(this.socios, new Socio("Catalina", "Berrios", "gabolopez070@gmail.com", 2, "26112022"));
 
             // creo un libro y lo agrego al arreglo de libros.
             this.libros = Utils.append(this.libros, new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
@@ -99,10 +99,10 @@ public final class Sistema {
     }
 
     private Socio logIn(final int numeroSocio, final String clave){
-        for (Socio value : this.socios) {
-            if (value.getNumeroDeSocio() == numeroSocio) {
-                if (value.getContrasenia().equalsIgnoreCase(clave)) {
-                    return this.socio = value;
+        for (Socio socio : this.socios) {
+            if (socio.getNumeroDeSocio() == numeroSocio) {
+                if (socio.getContrasenia().equalsIgnoreCase(clave)) {
+                    return this.socio = socio;
                 }
             }
         }
