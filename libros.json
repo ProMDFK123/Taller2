@@ -1,12 +1,18 @@
-[{
-  "isbn": "1541910777",
-  "titulo": "Head First Java: A Brain-Friendly Guide",
-  "autor": "Kathy Sierra",
-  "categoria": "Programming Languages"
-},
+[
+  {
+    "isbn": "1541910777",
+    "titulo": "Head First Java: A Brain-Friendly Guide",
+    "autor": "Kathy Sierra",
+    "categoria": "Programming Languages",
+    "calificacion": 0.0,
+    "cantidadCalificaciones": 0
+  },
   {
     "isbn": "1491910771",
     "titulo": "Effective Java",
     "autor": "Joshua Bloch",
-    "categoria": "Programming Languages"
-  }]
+    "categoria": "Programming Languages",
+    "calificacion": 0.0,
+    "cantidadCalificaciones": 0
+  }
+]
