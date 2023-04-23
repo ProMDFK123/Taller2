@@ -38,7 +38,7 @@ Class Sistema{
 -GSON: Gson
 +socio: Socio
 +Sistema()
-+iniciarSession(numeroSocio: int, contraseña: String): void
++iniciarSession(numeroSocio: int, contraseña: String): Socio
 +cerrarSesion(): void
 +realizarPrestamoLibro(isbn: String): void
 +obtenerCatalogoLibros(): String
@@ -49,8 +49,8 @@ Class Sistema{
 -eliminarDisponible(isbn: String): void
 -validarIsbn(libro: Libro): void
 -logIn(numeroSocio: int, clave: String): void
-+logIn(): void
-+realizarCalificacion(isbn: String): void
++logedIn(): Socio
++realizarCalificacion(isbn: String): Socio
 }
 
 Class Utils{
