@@ -61,9 +61,6 @@ public final class Sistema {
             // creo un socio.
             this.socios = Utils.append(this.socios, new Socio("John", "Doe", "john.doe@ucn.cl", 1, "John123"));
 
-            //creo otro socio.
-            //this.socios = Utils.append(this.socios, new Socio("Catalina", "Berrios", "gabolopez070@gmail.com", 2, "26112022"));
-
             // creo un libro y lo agrego al arreglo de libros.
             this.libros = Utils.append(this.libros, new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
             this.disponibles = Utils.append(this.disponibles, new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
