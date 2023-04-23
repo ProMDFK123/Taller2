@@ -59,10 +59,10 @@ public final class Sistema {
             // no se encontraron datos, se agregar los por defecto.
 
             // creo un socio.
-            this.socios = Utils.append(this.socios, new Socio("John", "Doe", "john.doe@ucn.cl", 1, "john123"));
+            this.socios = Utils.append(this.socios, new Socio("John", "Doe", "john.doe@ucn.cl", 1, "John123"));
 
             //creo otro socio.
-            this.socios = Utils.append(this.socios, new Socio("Catalina", "Berrios", "gabolopez070@gmail.com", 2, "26112022"));
+            //this.socios = Utils.append(this.socios, new Socio("Catalina", "Berrios", "gabolopez070@gmail.com", 2, "26112022"));
 
             // creo un libro y lo agrego al arreglo de libros.
             this.libros = Utils.append(this.libros, new Libro("1541910777", "Head First Java: A Brain-Friendly Guide", " Kathy Sierra", "Programming Languages"));
@@ -186,15 +186,15 @@ public final class Sistema {
     }
 
     /**
-     * Lee los archivos libros.json y socios.json.
+     * Lee los archivos libros.json, socios.json y disponibles.json.
      *
      * @throws FileNotFoundException si alguno de los archivos no se encuentra.
      */
     private void cargarInformacion() throws FileNotFoundException {
-
         // trato de leer los socios y los libros desde el archivo.
         this.socios = GSON.fromJson(new FileReader("socios.json"), Socio[].class);
         this.libros = GSON.fromJson(new FileReader("libros.json"), Libro[].class);
+        this.disponibles = GSON.fromJson(new FileReader("disponibles.json"),Libro[].class);
     }
 
     /**
@@ -214,6 +214,10 @@ public final class Sistema {
             GSON.toJson(this.libros, writer);
         }
 
+        // guardo los libros disponibles.
+        try (FileWriter writer = new FileWriter("disponibles.json")) {
+            GSON.toJson(this.disponibles, writer);
+        }
     }
 
     /**

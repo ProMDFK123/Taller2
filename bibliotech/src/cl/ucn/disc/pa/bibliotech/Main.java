@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * The Main.
  *
- * @author Gabriel López
+ * @author Gabriel López - 21.583.391-7
  */
 public final class Main {
 
