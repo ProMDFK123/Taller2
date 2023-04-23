@@ -277,4 +277,21 @@ public final class Sistema {
         // se actualiza la informacion de los archivos
         this.guardarInformacion();
     }
+
+    public void logIn(){
+        StdOut.println("[*] Iniciar sesion en BiblioTech [*]");
+        StdOut.print("Ingrese su numero de socio: ");
+        int numeroSocio = StdIn.readInt();
+        StdIn.readLine();
+
+        StdOut.print("Ingrese su contrasenia: ");
+        String contrasenia = StdIn.readLine();
+
+        // intento el inicio de session
+        try {
+            this.iniciarSession(numeroSocio, contrasenia);
+        } catch (IllegalArgumentException ex) {
+            StdOut.println("Ocurrio un error: " + ex.getMessage());
+        }
+    }
 }

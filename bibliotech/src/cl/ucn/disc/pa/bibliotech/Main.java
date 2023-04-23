@@ -60,21 +60,7 @@ public final class Main {
      * @param sistema a utilizar.
      */
     private static void iniciarSesion(final Sistema sistema) throws IOException {
-        StdOut.println("[*] Iniciar sesion en BiblioTech [*]");
-        StdOut.print("Ingrese su numero de socio: ");
-        int numeroSocio = StdIn.readInt();
-        StdIn.readLine();
-
-        StdOut.print("Ingrese su contrasenia: ");
-        String contrasenia = StdIn.readLine();
-
-        // intento el inicio de session
-        try {
-            sistema.iniciarSession(numeroSocio, contrasenia);
-        } catch (IllegalArgumentException ex) {
-            StdOut.println("Ocurrio un error: " + ex.getMessage());
-            return;
-        }
+        sistema.logIn();
 
         // mostrar menu principal
         menuPrincipal(sistema);
