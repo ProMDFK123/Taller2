@@ -50,6 +50,7 @@ public final class Sistema {
         // no hay socio logeado.
         this.socios = new Socio[0];
         this.libros = new Libro[0];
+        this.disponibles = new Libro[0];
         this.socio = null;
 
         // carga de los socios y libros.
