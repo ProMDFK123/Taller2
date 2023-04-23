@@ -60,7 +60,7 @@ public final class Main {
      * @param sistema a utilizar.
      */
     private static void iniciarSesion(final Sistema sistema) throws IOException {
-        sistema.logIn();
+        sistema.socio = sistema.logedIn();
 
         // mostrar menu principal
         menuPrincipal(sistema);

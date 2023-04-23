@@ -49,6 +49,7 @@ Class Sistema{
 -eliminarDisponible(isbn: String): void
 -validarIsbn(libro: Libro): void
 -logIn(numeroSocio: int, clave: String): void
++logIn(): void
 +realizarCalificacion(isbn: String): void
 }
 

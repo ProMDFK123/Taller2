@@ -85,7 +85,7 @@ public final class Sistema {
      * @param numeroDeSocio a utilizar.
      * @param contrasenia   a validar.
      */
-    public void iniciarSession(final int numeroDeSocio, final String contrasenia) {
+    public Socio iniciarSession(final int numeroDeSocio, final String contrasenia) {
 
         // el numero de socio siempre es positivo.
         if (numeroDeSocio <= 0) {
@@ -93,9 +93,12 @@ public final class Sistema {
         }
 
         try{
-            this.socio = this.logIn(numeroDeSocio,contrasenia);
+            return this.socio = this.logIn(numeroDeSocio,contrasenia);
         }
-        catch(IllegalArgumentException exception){StdOut.println("Ha ocurrido un error: "+exception);}
+        catch(IllegalArgumentException exception){
+            StdOut.println("Ha ocurrido un error: "+exception);
+            return null;
+        }
     }
 
     private Socio logIn(final int numeroSocio, final String clave){
@@ -278,7 +281,7 @@ public final class Sistema {
         this.guardarInformacion();
     }
 
-    public void logIn(){
+    public Socio logedIn(){
         StdOut.println("[*] Iniciar sesion en BiblioTech [*]");
         StdOut.print("Ingrese su numero de socio: ");
         int numeroSocio = StdIn.readInt();
@@ -289,9 +292,11 @@ public final class Sistema {
 
         // intento el inicio de session
         try {
-            this.iniciarSession(numeroSocio, contrasenia);
+            this.socio=this.iniciarSession(numeroSocio, contrasenia);
+            return this.socio;
         } catch (IllegalArgumentException ex) {
             StdOut.println("Ocurrio un error: " + ex.getMessage());
+            return null;
         }
     }
 }
